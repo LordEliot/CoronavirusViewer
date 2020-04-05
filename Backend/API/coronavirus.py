@@ -55,7 +55,7 @@ for case in response:
         counter += 1
     if case["atenci_n"] == "Recuperado" and case["ciudad_de_ubicaci_n"] == u"Ibagué":
         counter_recovered += 1
-     if case["ciudad_de_ubicaci_n"] == u"Ibagué" and case["atenci_n"] == "Fallecido":
+    if case["ciudad_de_ubicaci_n"] == u"Ibagué" and case["atenci_n"] == "Fallecido":
         counter_death += 1
 
 print("Casos en Ibague: " + str(counter))
