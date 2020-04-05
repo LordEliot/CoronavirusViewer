@@ -219,13 +219,7 @@ if type(input_list) is not list:
   quit()
 
 get_item_count(input_string, input_list)
-print("hola")
 
-
-print("esta vez no la vamos a cagar")
-
-
-Esto es algo que está en la nueva realidad y quiero que esté ahora en la realidad original.
   
 
 
