@@ -6,10 +6,10 @@ response = request.json()
 
 print("Proyecto Covid-19: Colombia")
 print("------------------------------------------")
-print("Nacional:")
-print("")
+print("Ingrese una ciudad: ")
 
-counter_recovered = 0
+
+"""counter_recovered = 0
 counter_death = 0
 
 for case in response:
@@ -60,7 +60,29 @@ for case in response:
 
 print("Casos en Ibague: " + str(counter))
 print("Casos recuperados en Ibague: " + str(counter_recovered))
-print("Muertes: " + str(counter_death))
+print("Muertes: " + str(counter_death))"""
 
+
+
+
+
+counter = 0
+counter_recovered = 0
+counter_death = 0
+
+city = raw_input().title()
+
+for case in response:
+    if case["ciudad_de_ubicaci_n"] == city:
+        counter += 1
+    if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Recuperado":
+        counter_recovered += 1
+    if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Fallecido":
+        counter_death += 1
+
+print("Para la ciudad de " + city + ", las estadisticas son las siguientes:")
+print("Casos positivos: " + str(counter))
+print("Casos recuperados: " + str(counter_recovered))
+print("Muertes: " + str(counter_death))
 print("-----------------------")
 print("Hecho por Diego Vidales")
