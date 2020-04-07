@@ -1,7 +1,7 @@
 # encoding: utf-8
 import requests
 
-request = requests.get('https://www.datos.gov.co/resource/gt2j-8ykr.json')
+request = requests.get('https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=5000')
 response = request.json()
 
 print("Proyecto Covid-19: Colombia")
@@ -72,17 +72,22 @@ counter_death = 0
 
 city = raw_input().title()
 
-for case in response:
-    if case["ciudad_de_ubicaci_n"] == city:
-        counter += 1
-    if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Recuperado":
-        counter_recovered += 1
-    if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Fallecido":
-        counter_death += 1
+if city == "Nacional":
+    counter = len(response) 
+    print("Para la ciudad de " + city + ", las estadisticas son las siguientes:")
+    print("Casos positivos: " + str(counter))
+else:
+    for case in response:
+        if case["ciudad_de_ubicaci_n"] == city:
+            counter += 1
+        if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Recuperado":
+            counter_recovered += 1
+        if case["ciudad_de_ubicaci_n"] == city and case["atenci_n"] == "Fallecido":
+            counter_death += 1         
 
-print("Para la ciudad de " + city + ", las estadisticas son las siguientes:")
-print("Casos positivos: " + str(counter))
-print("Casos recuperados: " + str(counter_recovered))
-print("Muertes: " + str(counter_death))
-print("-----------------------")
-print("Hecho por Diego Vidales")
+    print("Para la ciudad de " + city + ", las estadisticas son las siguientes:")
+    print("Casos positivos: " + str(counter))
+    print("Casos recuperados: " + str(counter_recovered))
+    print("Muertes: " + str(counter_death))
+    print("-----------------------")
+    print("Hecho por Diego Vidales")
